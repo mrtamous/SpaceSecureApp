@@ -1,0 +1,440 @@
+{% extends 'templates/enBasePage.html' %}
+
+{% block title %} Packages {% endblock %}
+
+
+
+{% block navbar %}
+ <!-- nav -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="index#hero">Home</a></li>
+          <li class="dropdown"><a href="../LTR/cypersecurity"><span>Cyber Security</span><i class="bi bi-plus fs-5 me-1"></i></a>
+            <ul>
+               {% for cypersecurity in cypersecurity_sub %}
+              <li><a href="../LTR/cypersecurity"><i class="bi bi-check-circle fs-3 text-info mx-2"></i>{{cypersecurity["service_name"]}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown"><a href="../LTR/hostservice"><span>Hosting</span><i class="bi bi-plus fs-5 me-1"></i></a>
+            <ul>
+              {% for host in host_sub %}
+              <li><a href="../LTR/hostservice"><i class="bi bi-check-circle fs-3 text-info mx-2"></i>{{host["service_name"]}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown"><a href="../LTR/webservice"><span>Website & Application</span><i class="bi bi-plus fs-5 me-1"></i></a>
+            <ul>
+               {% for webservice in webservice_sub %}
+                  <li><a href="../LTR/webservice"><i class="bi bi-check-circle fs-3 text-info mx-2"></i>{{webservice["service_name"]}}</a></li>
+                {% endfor %}
+
+            </ul>
+          </li>
+          <li><a class="scrollto" href="../LTR/package">Packages</a></li>
+          <li><a title="AR" href="/"><span class="badge bg-info link-hover p-2 rounded-circle"><i class="bi bi-translate fs-6"></i></span></a></li>
+          <li><a class="getstarted scrollto" href="/login"><span>Login</span></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- /nav -->
+{% endblock %}
+
+{% block content %}
+
+  <main id="main" class="page">
+
+    <!--breadcrumb-->
+    <section id="الباقات" class="breadcrumb-page">
+      <div class="container aos-init aos-animate">
+
+        <div class="row justify-content-center about-container">
+
+          <div class="col-lg-6 order-2 order-lg-1 content align-self-center">
+            <div class="card border-0 shadow-none bg-transparent">
+              <div class="card-header bg-transparent border-0" data-aos="fade-up">
+                <h3 class="card-title fs-4 mb-3 text-primary fw-bold"><i class="bi bi-bar-chart-steps fs-2 text-success"></i> Packages & Offers </h3>
+              </div>
+              <div class="card-body text-end p-0" data-aos="fade-up">
+                <p class="card-text fs-6 text-secondary lh-lg" style="text-align: justify;">
+                Get the perfect service with our exclusive packages that include excellence in your business.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 order-1 order-lg-2 background aos-init aos-animate" data-aos="zoom-in">
+            <img src="../assets/space_secure/assets/img/details-1.png" class="img-fluid" alt="">
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!--/breadcrumb-->
+
+
+    <!--  section1 -->
+     <section class="pricing">
+      <div class="container">
+        <div class="row pb-2 justify-content-center">
+          <div class="col-12 text-center">
+            <div class="card border-0">
+              <div class="card-body text-center p-1">
+                <h3 class="card-title fs-4 mb-3 text-primary fw-bold" data-aos="fade-up"><i class="bi bi-file-earmark-code fs-2 text-success"></i> Web Services Packages</h3>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row  owl-carousel owl-theme justify-content-center gy-4 mt-2">
+
+          {% for webservice in webservice_package %}
+
+          <div class="col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-item text-center">
+              <span class="box-icon-se" ><i class="bi bi-bag-check-fill fs-1"></i></span>
+              <h3>{{webservice["package_name_en"]}}</h3>
+              <h4><sup>SAR</sup>{{webservice["price"]}}</h4>
+              <h5><sup>Monthly</sup></h5>
+              <ul>
+
+                <li><i class="bi bi-check"></i>Professional Design:
+                  {% if webservice["professional_design"] =="اختيار قالب" %}
+                    Choose a template
+                  {% elif webservice["professional_design"] =="تصميم خاص"  %}
+                    Special Design
+                  {% elif webservice["professional_design"] =="غير محدود"  %}
+                  Unlimited
+                  {% endif %}
+                  </li>
+
+                <li><i class="bi bi-check"></i>Language:
+                  {% if webservice["multi_language"] =="عربي فقط" %}
+                    Arabic only
+                  {% elif webservice["multi_language"] =="عربي انجليزي"  %}
+                    Arabic English
+                  {% elif webservice["multi_language"] =="اكثر من لغة"  %}
+                  Multi Language
+                  {% endif %}
+                  </li>
+
+                <li>
+                {% if webservice["logo_design"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Logo Design
+                </li>
+
+                <li>
+                {% if webservice["compatibility_with_browser"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                 Browser compatibility
+                </li>
+
+                <li>
+                {% if webservice["multiple_pages"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Unlimited pages
+                </li>
+
+                <li>
+                {% if webservice["live_chat"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Live chat
+                </li>
+
+                <li>
+                {% if webservice["adding__in_google"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                 Add website in Google
+                </li>
+
+                <li>
+                {% if webservice["photo_and_video_gallery"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Photo & Video Gallery
+                </li>
+
+                <li>
+                {% if webservice["adding_social_media_pages"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                 Add Social Media
+                </li>
+
+                <li>
+                {% if webservice["service_request_forms"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Service Request Form
+                </li>
+
+                <li>
+                {% if webservice["product_and_shopping_cart"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Products with cart
+                </li>
+
+                <li>
+                {% if webservice["website_stats"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Website Stats
+                </li>
+
+                <li>
+                {% if webservice["platform_upgrade"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                upgrade of the platform
+                </li>
+
+                <li>
+                {% if webservice["training__on_dashboard"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Control panel training
+                </li>
+
+                <li>
+                {% if webservice["technical_support"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Technical Support
+                </li>
+
+                <li>
+                {% if webservice["protection_and_security"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                Protection
+                </li>
+                 {% for features in webservice.website_service_features %}
+                <li><i class="bi bi-check"></i>{{features.service_features_name}}</li>
+                {% endfor %}
+              </ul>
+              <a href="../LTR/servicerequest" class="btn  hvr-sweep-to-top btn-outline-success ms-4 me-4">Order Now <i class="bi bi-arrow-down"></i></a>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    <!-- / section1 -->
+
+      <!--  section1 -->
+ <section class="pricing">
+  <div class="container">
+    <div class="row pb-2 justify-content-center">
+      <div class="col-12 text-center">
+        <div class="card border-0">
+          <div class="card-body text-center p-1">
+            <h3 class="card-title fs-4 mb-3 text-primary fw-bold" data-aos="fade-up"><i class="bi bi-file-earmark-code fs-2 text-success"></i> Application Services Packages</h3>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row  owl-carousel owl-theme justify-content-center gy-4 mt-2">
+
+      {% for app in app_package %}
+      <div class="col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+        <div class="pricing-item text-center">
+          <span class="box-icon-se" ><i class="bi bi-apple fs-1"></i></span>
+          <h3>{{app["package_name_en"]}}</h3>
+          <h4><sup>SAR</sup>{{app["price"]}}</h4>
+          <h5><sup>Monthly</sup></h5>
+          <ul>
+             {% for features in app.applications_service_features %}
+            <li><i class="bi bi-check"></i>{{features.service_features_name}}</li>
+            {% endfor %}
+          </ul>
+          <a href="../LTR/servicerequest" class="btn  hvr-sweep-to-top btn-outline-success ms-4 me-4">Order Now <i class="bi bi-arrow-down"></i></a>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+<!-- / section1 -->
+
+    <!--  section2 -->
+    <section class="pricing">
+      <div class="container">
+        <div class="row pb-2 justify-content-center">
+          <div class="col-12 text-center">
+            <div class="card border-0">
+              <div class="card-body text-center p-1">
+                <h3 class="card-title fs-4 mb-3 text-primary fw-bold" data-aos="fade-up"><i class="bi bi-hdd-network fs-2 text-success"></i> Hosting Services Packages </h3>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row  owl-carousel owl-theme justify-content-center gy-4 mt-2">
+
+          {% for host in host_package %}
+          <div class="col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-item text-center">
+              <span class="box-icon-se" ><i class="bi bi-hdd-network fs-1"></i></span>
+              <h3>{{host["package_name_en"]}}</h3>
+              <h4><sup>SAR</sup>{{host["price"]}}</h4>
+              <h5><sup>Monthly</sup></h5>
+              <ul>
+                <li><i class="bi bi-check"></i>	RAM: {{host["ram"]}}</li>
+                <li><i class="bi bi-check"></i>	Hard disk: {{host["hard_drive"]}}</li>
+                <li><i class="bi bi-check"></i>	Traffic: {{host["traffic"]}}</li>
+                <li><i class="bi bi-check"></i>	CPU: {{host["processor"]}}</li>
+                <li><i class="bi bi-check"></i>Number of files: {{host["number_of_files"]}}</li>
+                <li><i class="bi bi-check"></i>connections per moment: {{host["number_of_connections_at_the_moment"]}}</li>
+                <li><i class="bi bi-check"></i>	Number of emails: {{host["number_of__emails"]}}</li>
+                <li><i class="bi bi-check"></i>	Number of databases: {{host["number_of_databases"]}}</li>
+
+                <li>
+                {% if host["ssl_certificate"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                SSL certificate
+                </li>
+
+                <li>
+                {% if host["ssh_access"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                SSH access
+                </li>
+
+                 {% for features in host.hosting_service_features %}
+                <li><i class="bi bi-check"></i>{{features.service_features_name}}</li>
+                {% endfor %}
+
+                <li>
+                {% if host["hours_technical_support"] ==1 %}
+                  <i class="bi bi-check"></i>
+                {% else %}
+                  <i class="bi bi-x"></i>
+                {% endif %}
+                24-hour technical support
+                </li>
+              </ul>
+              <a href="../LTR/servicerequest" class="btn  hvr-sweep-to-top btn-outline-success ms-4 me-4">Order Now <i class="bi bi-arrow-down"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- / section2 -->
+
+     <!--  section3 -->
+    <section class="pricing">
+      <div class="container">
+        <div class="row pb-2 justify-content-center">
+          <div class="col-12 text-center">
+            <div class="card border-0">
+              <div class="card-body text-center p-1">
+                <h3 class="card-title fs-4 mb-3 text-primary fw-bold" data-aos="fade-up"><i class="bi bi-shield-check fs-2 text-success"></i> Cybersecurity Services Packagespy </h3>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row  owl-carousel owl-theme justify-content-center gy-4 mt-2">
+          {% for cypersecurity in cypersecurity_package %}
+          <div class="col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-item text-center">
+              <span class="box-icon-se" ><i class="bi bi-shield-check fs-1"></i></span>
+              <h3>{{cypersecurity["package_name_en"]}}</h3>
+              <ul>
+                 {% for features in cypersecurity["service_features"] %}
+                <li><i class="bi bi-check"></i>{{features.service_features_name}}</li>
+                {% endfor %}
+              </ul>
+              <a href="../LTR/servicerequest" class="btn  hvr-sweep-to-top btn-outline-success ms-4 me-4">Order Now <i class="bi bi-arrow-down"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+    <!-- / section3 -->
+
+  </main><!-- End #main -->
+
+{% endblock %}
+
+
+ {% block footer %}
+<div class="col-md-6 col-10 col-lg footer-links">
+    <h4>Cyber Security</h4>
+    <ul>
+      {% for cypersecurity in cypersecurity_sub %}
+      <li><a href="../LTR/cypersecurity"><i class="bi bi-check-circle fs-3 text-info mx-2"></i>{{cypersecurity["service_name"]}}</a></li>
+      {% endfor %}
+
+    </ul>
+  </div>
+  <div class="col-md-6 col-10 col-lg footer-links">
+    <h4>Hosting services</h4>
+    <ul>
+      {% for host in host_sub %}
+      <li><a href="../LTR/hostservice"><i class="bi bi-check-circle fs-3 text-info mx-2"></i>{{host["service_name"]}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-6 col-10 col-lg footer-links">
+    <h4>Website & Application design</h4>
+    <ul>
+      {% for webservice in webservice_sub %}
+          <li><a href="../LTR/webservice"><i class="bi bi-check-circle fs-3 text-info mx-2"></i>{{webservice["service_name"]}}</a></li>
+        {% endfor %}
+    </ul>
+  </div>
+
+{% endblock %}
